@@ -42,8 +42,11 @@ let
         pyworld.wheel = [ ];
         pyworld.setuptools = [ ];
         pyworld.numpy = [ ];
-        editdistance.pdm-backend = [ ];
-        editdistance.cython = [ ];
+        editdistance = {
+          pdm-backend = [ ];
+          cython = [ ];
+          setuptools = [ ];
+        };
       };
     in
     builtins.mapAttrs (

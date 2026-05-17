@@ -63,3 +63,9 @@ target/
 .vscode/settings.json
 .DS_Store
 .gitignore
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

@@ -20,8 +20,33 @@ diacritics:
     conditions:
       - son: "+"
         voi: "+"
+      - son: "-"
+        voi: "+"
+      - son: "-"
+        voi: "-"
     content:
       voi: "-"
+
+  - marker: ̊
+    name: "Voiceless Above"
+    position: post
+    conditions:
+      - son: "+"
+        voi: "+"
+      - son: "-"
+        voi: "+"
+      - son: "-"
+        voi: "-"
+    content:
+      voi: "-"
+
+  - marker: ̬
+    name: Voiced
+    position: post
+    conditions:
+      - voi: "-"
+    content:
+      voi: "+"
 
   - marker: ʰ
     name: Aspirated
@@ -33,6 +58,8 @@ diacritics:
       - cont: "+"
         son: "-"
         voi: "-"
+      - syl: "-"
+        son: "+"
     content:
       sg: "+"
 
@@ -61,6 +88,13 @@ diacritics:
       - syl: "+"
     exclude:
       - ə
+    content: {}
+
+  - marker: ̽
+    name: "Mid-centralized"
+    position: post
+    conditions:
+      - syl: "+"
     content: {}
 
 # Syllabicity
@@ -157,11 +191,24 @@ diacritics:
     content:
       lab: "+"
 
+  - marker: ̪
+    name: Dental
+    position: post
+    conditions:
+      - cor: "+"
+        ant: "+"
+      - syl: "-"
+    content:
+      ant: "+"
+      cor: "+"
+      distr: "+"
+
   - marker: ʷ
     name: Labialized
     position: post
     conditions:
       - syl:  "-"
+      - syl: "+"
     exclude:
       - w
       - ʍ
@@ -176,6 +223,7 @@ diacritics:
     position: post
     conditions:
       - syl: "-"
+      - syl: "+"
     exclude:
       - j
       - ɥ
@@ -246,12 +294,36 @@ diacritics:
       - cont: "+"
     content: {}
 
+  - marker: ˔
+    name: "Raised Modifier"
+    position: post
+    conditions:
+      - cont: "+"
+    content: {}
+
   - marker: ̞
     name: Lowered
     position: post
     conditions:
       - cont: "+"
     content: {}
+
+  - marker: ̹
+    name: "More Rounded"
+    position: post
+    conditions:
+      - syl: "+"
+        round: "-"
+    content:
+      round: "+"
+
+  - marker: ͗
+    name: "Advanced Rounded"
+    position: post
+    conditions:
+      - syl: "+"
+    content:
+      round: "+"
 
 # Tongue root state
 
@@ -312,6 +384,7 @@ diacritics:
       - son: "-"
         cont: "-"
         delrel: "-"
+      - syl: "+"
     content:
       nas: "+"
 
@@ -327,10 +400,54 @@ diacritics:
       lat: "+"
       delrel: "+"
 
+  - marker: ᵊ
+    name: "Schwa Release"
+    position: pre
+    conditions:
+      - {}
+    content: {}
+
+  - marker: ᵈ
+    name: "D Release"
+    position: pre
+    conditions:
+      - {}
+    content: {}
+
+  - marker: ̚
+    name: "No Audible Release"
+    position: post
+    conditions:
+      - son: "-"
+        cont: "-"
+        delrel: "-"
+      - cg: "+"
+    content: {}
+
+  - marker: ̍
+    name: "Syllabic Above"
+    position: post
+    conditions:
+      - syl: "-"
+        son: "+"
+    exclude:
+      - ʔ
+    content:
+      syl: "+"
+
 # Suprasegmentals
 
   - marker: ː
     name: Long
+    position: post
+    conditions:
+      - long: "-"
+      - long: "+"
+    content:
+      long: "+"
+
+  - marker: ˑ
+    name: "Half Long"
     position: post
     conditions:
       - long: "-"
@@ -349,6 +466,16 @@ diacritics:
 combinations:
 
 # Quantity
+
+  - name: Non-syllabic Long
+    combines:
+    - Non-syllabic
+    - Long
+
+  - name: Long Long
+    combines:
+    - Long
+    - Long
 
   - name: Long Labialized
     combines:
@@ -418,6 +545,40 @@ combinations:
     - Voiceless
     - Long
 
+  - name: Raised Voiceless Above
+    combines:
+    - Raised
+    - "Voiceless Above"
+
+  - name: Raised Voiceless Above Labialized
+    combines:
+    - Raised
+    - "Voiceless Above"
+    - Labialized
+
+  - name: Voiceless No Audible Release
+    combines:
+    - Voiceless
+    - "No Audible Release"
+
+  - name: Retracted Voiceless Above
+    combines:
+    - Retracted
+    - "Voiceless Above"
+
+  - name: Retracted Voiceless Above Raised Modifier
+    combines:
+    - Retracted
+    - "Voiceless Above"
+    - "Raised Modifier"
+
+  - name: Retracted Voiceless Above Raised Modifier Labialized
+    combines:
+    - Retracted
+    - "Voiceless Above"
+    - "Raised Modifier"
+    - Labialized
+
 ## Aspirated
 
   - name: Aspirated Labialized
@@ -458,6 +619,31 @@ combinations:
     - Labialized
 
 # Rhoticity
+
+  - name: Rhotacized Non-syllabic
+    combines:
+    - Rhotacized
+    - Non-syllabic
+
+  - name: Rhotacized Lowered
+    combines:
+    - Rhotacized
+    - Lowered
+
+  - name: Rhotacized Half Long
+    combines:
+    - Rhotacized
+    - "Half Long"
+
+  - name: Rhotacized Long
+    combines:
+    - Rhotacized
+    - Long
+
+  - name: Rhotacized Nasalized
+    combines:
+    - Rhotacized
+    - Nasalized
 
 # Voice quality
 
@@ -524,7 +710,77 @@ combinations:
 
 ## Linguolabial
 
+## Dental
+
+  - name: Dental Voiceless Above
+    combines:
+    - Dental
+    - "Voiceless Above"
+
 ## Labialized
+
+  - name: Advanced Long
+    combines:
+    - Advanced
+    - Long
+
+  - name: Raised More Rounded
+    combines:
+    - Raised
+    - "More Rounded"
+
+  - name: Raised Advanced Rounded
+    combines:
+    - Raised
+    - "Advanced Rounded"
+
+  - name: Raised Labialized
+    combines:
+    - Raised
+    - Labialized
+
+  - name: Centralized Lowered
+    combines:
+    - Centralized
+    - Lowered
+
+  - name: Centralized Lowered Labialized
+    combines:
+    - Centralized
+    - Lowered
+    - Labialized
+
+  - name: Raised Long
+    combines:
+    - Raised
+    - Long
+
+  - name: Laminal Raised Long
+    combines:
+    - Laminal
+    - Raised
+    - Long
+
+  - name: Lowered Long
+    combines:
+    - Lowered
+    - Long
+
+  - name: Retracted Labialized
+    combines:
+    - Retracted
+    - Labialized
+
+  - name: Retracted Aspirated
+    combines:
+    - Retracted
+    - Aspirated
+
+  - name: Retracted Raised Modifier Labialized
+    combines:
+    - Retracted
+    - "Raised Modifier"
+    - Labialized
 
   - name: Labialized Aspirated
     combines:
@@ -667,3 +923,38 @@ combinations:
     combines:
     - Nasalized
     - Long
+
+  - name: Nasalized Half Long
+    combines:
+    - Nasalized
+    - "Half Long"
+
+  - name: Nasalized Nasal Release
+    combines:
+    - Nasalized
+    - "Nasal Release"
+
+  - name: Non-syllabic Nasalized
+    combines:
+    - Non-syllabic
+    - Nasalized
+
+  - name: Non-syllabic Labialized
+    combines:
+    - Non-syllabic
+    - Labialized
+
+  - name: Syllabic Above Long
+    combines:
+    - "Syllabic Above"
+    - Long
+
+  - name: Schwa Release Syllabic
+    combines:
+    - "Schwa Release"
+    - Syllabic
+
+  - name: D Release Syllabic
+    combines:
+    - "D Release"
+    - Syllabic

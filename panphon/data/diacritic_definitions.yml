@@ -155,23 +155,6 @@ diacritics:
     content:
       cg: "+"
 
-  - marker: ˀ # not IPA
-    name: Glottalized
-    position: post
-    conditions:
-      - cg: "-"
-    content:
-      cg: "+"
-
-  - marker: ˀ # not IPA
-    name: Preglottalized
-    position: pre
-    conditions:
-      - syl: "-"
-      - cg: "-"
-    content:
-      cg: "+"
-
 # Secondary articulations
 
   - marker: ̼
@@ -197,7 +180,6 @@ diacritics:
     conditions:
       - cor: "+"
         ant: "+"
-      - syl: "-"
     content:
       ant: "+"
       cor: "+"
@@ -265,7 +247,8 @@ diacritics:
     name: Pharyngealized
     position: post
     conditions:
-      - {}
+      - syl: "-"
+      - syl: "+"
     exclude:
       - ʔ
       - ʕ
@@ -404,14 +387,10 @@ diacritics:
     name: "Schwa Release"
     position: pre
     conditions:
-      - {}
-    content: {}
-
-  - marker: ᵈ
-    name: "D Release"
-    position: pre
-    conditions:
-      - {}
+      - syl: "-"
+        son: "-"
+        cont: "-"
+        delrel: "-"
     content: {}
 
   - marker: ̚
@@ -442,7 +421,6 @@ diacritics:
     position: post
     conditions:
       - long: "-"
-      - long: "+"
     content:
       long: "+"
 
@@ -470,11 +448,6 @@ combinations:
   - name: Non-syllabic Long
     combines:
     - Non-syllabic
-    - Long
-
-  - name: Long Long
-    combines:
-    - Long
     - Long
 
   - name: Long Labialized
@@ -798,11 +771,6 @@ combinations:
     - Labialized
     - Ejective
 
-  - name: Labialized Glottalized
-    combines:
-    - Labialized
-    - Glottalized
-
   - name: Labialized Velarized
     combines:
     - Labialized
@@ -952,9 +920,4 @@ combinations:
   - name: Schwa Release Syllabic
     combines:
     - "Schwa Release"
-    - Syllabic
-
-  - name: D Release Syllabic
-    combines:
-    - "D Release"
     - Syllabic
